@@ -16,7 +16,7 @@ function Detail() {
     API.getBook(id)
       .then(res => setBook(res.data))
       .catch(err => console.log(err));
-  }, [])
+  }, [ id ]) /* this was empty array but including id suppresses warning, may or may not work */
 
   return (
       <Container fluid>
