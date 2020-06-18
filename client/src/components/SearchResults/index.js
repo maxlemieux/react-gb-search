@@ -3,14 +3,14 @@ import Book from "../Book";
 
 function SearchResults(props, { children }) {
   return (
-    <div>
+    <ul className="list-group">
       {props.searchResults.map(item => (
             <Book book={item.volumeInfo} />
           )
         )
       }
       {children}
-    </div>
+    </ul>
   );
 }
 
