@@ -4,25 +4,20 @@ import API from "../utils/API";
 import { Input, FormBtn } from "../components/Form";
 
 function Search() {
-  const [books, setBooks] = useState([])
-  const [formObject, setFormObject] = useState({})
+  /* books are the saved books favorited in mongo */
+  const [books, setBooks] = useState([]);
+  const [formObject, setFormObject] = useState({});
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     loadBooks()
   });
 
   function loadBooks() {
+    console.log('loadBooks was triggered');
     API.getBooks()
       .then(res => 
-        setBooks(res.data)
-      )
-      .catch(err => console.log(err));
-  };
-
-  function showResults() {
-    API.getBooks()
-      .then(res => 
-        setBooks(res.data)
+        setBooks(res.data.items)
       )
       .catch(err => console.log(err));
   };
@@ -36,9 +31,9 @@ function Search() {
     event.preventDefault();
     if (formObject.search) {
       API.searchBook(formObject.search)
-      // .then(res => showResults())
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
+      // .then(res => console.log(res.data.items))
+      .then(res => setSearchResults(res.data.items))
+      .catch(err => console.log(err));
     }
   };
 
