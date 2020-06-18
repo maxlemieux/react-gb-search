@@ -10,19 +10,6 @@ function Search() {
   const [formObject, setFormObject] = useState({});
   const [searchResults, setSearchResults] = useState([]);
 
-  useEffect(() => {
-    loadBooks()
-  });
-
-  function loadBooks() {
-    console.log('loadBooks was triggered');
-    API.getBooks()
-      .then(res => 
-        setBooks(res.data.items)
-      )
-      .catch(err => console.log(err));
-  };
-
   function handleInputChange(event) {
     const { name, value } = event.target;
     setFormObject({...formObject, [name]: value})
@@ -49,7 +36,7 @@ function Search() {
         author: formObject.author,
         synopsis: formObject.synopsis
       })
-        .then(res => loadBooks())
+        .then(console.log('saved a favorite'))
         .catch(err => console.log(err));
     }
   };
