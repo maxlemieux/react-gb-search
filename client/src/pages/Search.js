@@ -69,8 +69,7 @@ function Search() {
         <FormBtn
           disabled={!(formObject.search)}
           onClick={handleFormSubmit}
-        >
-          Search
+        >Search
         </FormBtn>
       </form>
       <div id="content"></div>
