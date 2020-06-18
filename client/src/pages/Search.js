@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Jumbotron from "../components/Jumbotron";
+import SearchResults from "../components/SearchResults";
 import API from "../utils/API";
 import { Input, FormBtn } from "../components/Form";
 
@@ -32,7 +33,10 @@ function Search() {
     if (formObject.search) {
       API.searchBook(formObject.search)
       // .then(res => console.log(res.data.items))
-      .then(res => setSearchResults(res.data.items))
+      .then(res => {
+        setSearchResults(res.data.items)
+        res.data.items.map(item => console.log(item));
+      })
       .catch(err => console.log(err));
     }
   };
@@ -70,6 +74,7 @@ function Search() {
         </FormBtn>
       </form>
       <div id="content"></div>
+      <SearchResults searchResults={searchResults} />
     </>
   );
 }
