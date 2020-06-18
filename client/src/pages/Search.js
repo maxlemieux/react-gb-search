@@ -18,10 +18,8 @@ function Search() {
     event.preventDefault();
     if (formObject.search) {
       API.searchBook(formObject.search)
-      // .then(res => console.log(res.data.items))
       .then(res => {
         setSearchResults(res.data.items)
-        res.data.items.map(item => console.log(item));
       })
       .catch(err => console.log(err));
     }
@@ -45,7 +43,6 @@ function Search() {
         >Search
         </FormBtn>
       </form>
-      <div id="content"></div>
       <SearchResults searchResults={searchResults} />
     </>
   );

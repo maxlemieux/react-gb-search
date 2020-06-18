@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Book from "../components/Book";
-import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
 import { 
-  // Col, 
-  // Row, 
   Container 
 } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-// import { Input, TextArea, FormBtn } from "../components/Form";
+import { List } from "../components/List";
 
 function Saved() {
   const [books, setBooks] = useState([])
-  // const [formObject, setFormObject] = useState({})
 
   useEffect(() => {
     loadBooks()
@@ -33,24 +27,6 @@ function Saved() {
       .then(res => loadBooks())
       .catch(err => console.log(err));
   }
-
-  // function handleInputChange(event) {
-  //   const { name, value } = event.target;
-  //   setFormObject({...formObject, [name]: value})
-  // };
-
-  // function handleFormSubmit(event) {
-  //   event.preventDefault();
-  //   if (formObject.title && formObject.author) {
-  //     API.saveBook({
-  //       title: formObject.title,
-  //       author: formObject.author,
-  //       synopsis: formObject.synopsis
-  //     })
-  //       .then(res => loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
 
     return (
       <Container fluid>
