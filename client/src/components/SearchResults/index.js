@@ -1,16 +1,17 @@
 import React from "react";
 import Book from "../Book";
+import { List } from "../List";
 
 function SearchResults(props, { children }) {
   return (
-    <ul className="list-group">
+    <List className="list-group">
       {props.searchResults.map((item, iter) => (
             <Book book={item.volumeInfo} key={iter} />
           )
         )
       }
       {children}
-    </ul>
+    </List>
   );
 }
 

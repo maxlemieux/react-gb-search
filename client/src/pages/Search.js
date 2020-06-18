@@ -21,7 +21,7 @@ function Search() {
       // .then(res => console.log(res.data.items))
       .then(res => {
         setSearchResults(res.data.items)
-        // res.data.items.map(item => console.log(item));
+        res.data.items.map(item => console.log(item));
       })
       .catch(err => console.log(err));
     }

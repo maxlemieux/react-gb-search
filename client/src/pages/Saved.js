@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Book from "../components/Book";
 import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
@@ -11,7 +12,7 @@ import {
 import { List, ListItem } from "../components/List";
 // import { Input, TextArea, FormBtn } from "../components/Form";
 
-function Books() {
+function Saved() {
   const [books, setBooks] = useState([])
   // const [formObject, setFormObject] = useState({})
 
@@ -53,29 +54,24 @@ function Books() {
 
     return (
       <Container fluid>
-            <Jumbotron>
-              <h1>react-gb-search</h1>
-              <h4>Search for and Save Books of Interest</h4>
-            </Jumbotron>
-            {books.length ? (
-              <List>
-                {books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
-                      <strong>
-                        {book.title} by {book.author}
-                      </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => deleteBook(book._id)} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
+        <Jumbotron>
+          <h1>react-gb-search</h1>
+          <h4>Search for and Save Books of Interest</h4>
+        </Jumbotron>
+        {books.length ? (
+          <List>
+            {books.map(book => (
+              <>
+                <Book book={book} deleteBook={deleteBook} key={book._id} saved={true} />
+              </>
+            ))}
+          </List>
+        ) : (
+          <h3>No Results to Display</h3>
+        )}
       </Container>
     );
   }
 
 
-export default Books;
+export default Saved;
