@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Jumbotron from "../components/Jumbotron";
 import SearchResults from "../components/SearchResults";
 import API from "../utils/API";
@@ -6,7 +6,6 @@ import { Input, FormBtn } from "../components/Form";
 
 function Search() {
   /* books are the saved books favorited in mongo */
-  const [books, setBooks] = useState([]);
   const [formObject, setFormObject] = useState({});
   const [searchResults, setSearchResults] = useState([]);
 
@@ -22,22 +21,9 @@ function Search() {
       // .then(res => console.log(res.data.items))
       .then(res => {
         setSearchResults(res.data.items)
-        res.data.items.map(item => console.log(item));
+        // res.data.items.map(item => console.log(item));
       })
       .catch(err => console.log(err));
-    }
-  };
-
-  function handleFavoriteSubmit(event) {
-    event.preventDefault();
-    if (formObject.title && formObject.author) {
-      API.saveBook({
-        title: formObject.title,
-        author: formObject.author,
-        synopsis: formObject.synopsis
-      })
-        .then(console.log('saved a favorite'))
-        .catch(err => console.log(err));
     }
   };
 
