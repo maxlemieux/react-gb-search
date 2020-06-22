@@ -33,14 +33,14 @@ function Book(props, { children }) {
             <img alt="book cover" className="float-left" src={(imageLinks && imageLinks.thumbnail)||'http://via.placeholder.com/128/FFFFFF?text=No%20image'} />
           </Col>
           <Col size="md-10">
-            <h5><a href={canonicalVolumeLink}>{title}</a></h5>
-            <p>{(authors && authors.length > 1) ? 'Authors' : 'Author'} {(authors && authors.map(author => {
-              return (
-                author
-              )
-            }))||'n/a'}
+            <h6>Title:</h6>
+            <p><a href={canonicalVolumeLink}>{title}</a></p>
+            <h6>{(authors && authors.length > 1) ? 'Authors:' : 'Author:'}</h6>
+            <p>
+              {(authors && authors.map(author => <>{author}<br/></>))||'n/a'}
             </p>
-            <p>Publisher: {publisher||'n/a'}</p>
+            <h6>Publisher:</h6>
+            <p>{publisher||'n/a'}</p>
             <p>Published Date: {new Date(publishedDate).toLocaleDateString()||'n/a'}</p>
             <br/>
             {props.saved||<p><FormBtn onClick={saveFavorite}>Save</FormBtn></p>}

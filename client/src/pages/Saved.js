@@ -37,9 +37,7 @@ function Saved() {
         {books.length ? (
           <List>
             {books.map(book => (
-              <>
-                <Book book={book} deleteBook={deleteBook} key={book._id} saved={true} />
-              </>
+              <Book book={book} deleteBook={deleteBook} key={book._id} saved={true} />
             ))}
           </List>
         ) : (
