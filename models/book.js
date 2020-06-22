@@ -6,7 +6,7 @@ const bookSchema = new Schema({
   // publisher: String,
   // publishedDate: Date,
   title: { type: String, required: true },
-  author: { type: Array },
+  authors: { type: Array },
   canonicalVolumeLink: String,
   imageLinks: { thumbnail: String },
   publisher: String,
