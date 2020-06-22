@@ -8,8 +8,10 @@ import API from "../../utils/API";
 function Book(props, { children }) {
   const { authors, canonicalVolumeLink, description, imageLinks, publisher, publishedDate, title } = props.book;
 
-  const saveFavorite = () => {
-    console.log(props.book)
+  const saveFavorite = (event) => {
+    console.log(event.target.firstChild.data)
+    event.target.firstChild.data = 'Saved!';
+    event.target.disabled = true;
     API.saveBook({
       authors,
       canonicalVolumeLink,
