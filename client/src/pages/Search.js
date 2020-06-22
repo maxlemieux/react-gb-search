@@ -24,13 +24,16 @@ function Search() {
       .catch(err => console.log(err));
     }
   };
-
+  const resultsStyle = {
+    margin: '20px',
+  }
   return (
     <>
       <Jumbotron>
         <h1>react-gb-search</h1>
         <h4>Search for and Save Books of Interest</h4>
       </Jumbotron>
+      <div className="container">
       <form>
         <Input
           onChange={handleInputChange}
@@ -43,7 +46,8 @@ function Search() {
         >Search
         </FormBtn>
       </form>
-      <SearchResults searchResults={searchResults} />
+      <SearchResults style={resultsStyle} searchResults={searchResults} />
+      </div>
     </>
   );
 }
